@@ -8,7 +8,7 @@ PORT = 9999
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # connect함수로 접속을 한다.
 client_socket.connect((HOST, PORT))
- 
+
 # 10번의 루프로 send receive를 한다.
 for i in range(1,10):
   # 메시지는 hello로 보낸다.
@@ -21,7 +21,7 @@ for i in range(1,10):
   client_socket.sendall(length.to_bytes(4, byteorder="little"))
   # 데이터를 전송한다.
   client_socket.sendall(data)
- 
+
   # server로 부터 전송받을 데이터 길이를 받는다.
   data = client_socket.recv(4)
   # 데이터 길이는 리틀 엔디언 형식으로 int를 변환한다.
@@ -34,3 +34,4 @@ for i in range(1,10):
   print('Received from : ', msg)
       
 client_socket.close()
+
