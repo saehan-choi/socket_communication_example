@@ -11,9 +11,12 @@ server_socket.bind(ADDR)
 server_socket.listen()
 print('started')
 
-client_socket, client_addr = server_socket.accept()
-msg = client_socket.recv(SIZE)
-msg = str(msg.decode())
-client_socket.close()
+while True:
+    client_socket, client_addr = server_socket.accept()
+    msg = client_socket.recv(SIZE)
+    client_socket.sendall('received'.encode())
+    
+    msg = str(msg.decode())
+    client_socket.close()
 
-print(msg)
+    print(msg)
